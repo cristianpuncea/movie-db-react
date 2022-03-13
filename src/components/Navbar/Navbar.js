@@ -4,8 +4,8 @@ import Search from "./components/Search/Search";
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
-      <div className="container-fluid">
+    <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-secondary">
+      <div className="container-lg">
         <NavMenu />
         <Search />
         <Logo />

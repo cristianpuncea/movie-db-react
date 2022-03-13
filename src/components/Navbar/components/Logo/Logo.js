@@ -1,7 +1,11 @@
+import classes from "./Logo.module.scss";
+
 function Logo() {
   return (
-    <a className="navbar-brand" href="#">
-      Navbar
+    <a href="#">
+      <div className={classes["logo-container"]}>
+          <img className={classes.logo} src="movie-db-logo.png" alt="" />
+      </div>
     </a>
   );
 }

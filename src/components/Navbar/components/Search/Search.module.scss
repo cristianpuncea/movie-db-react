@@ -1,0 +1,31 @@
+.input-search {
+    border: 2px solid rgb(22, 22, 22);
+    padding: 5px;
+    -moz-transition: all .5s;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+
+.input-search:focus {
+  outline: 1px;
+  border-color: rgb(22, 22, 22);
+  box-shadow: 0px 0px 2px 3px #272b339d;
+}
+
+
+.form-control-ORIGINAL {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}

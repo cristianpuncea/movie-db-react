@@ -1,40 +1,40 @@
-function NavMenu() {
-  return (
-    <div
-      class="btn-group"
-      role="group"
-      aria-label="Button group with nested dropdown"
-    >
-      <button type="button" class="btn btn-primary">
-        1
-      </button>
-      <button type="button" class="btn btn-primary">
-        2
-      </button>
+import { useState } from "react";
+import MenuBtnList from "./components/MenuBtnList";
+import classes from "./NavMenu.module.scss";
 
-      <div class="btn-group" role="group">
-        <button
-          id="btnGroupDrop1"
-          type="button"
-          class="btn btn-primary dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Dropdown
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-          <li>
-            <a class="dropdown-item" href="#">
-              Dropdown link
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">
-              Dropdown link
-            </a>
-          </li>
-        </ul>
-      </div>
+function NavMenu() {
+
+  const hamburgerIconInit = `${classes["container-hamburger"]}`;
+
+  const [hamburgerIcon, setHamburgerIcon] = useState(hamburgerIconInit);
+
+  const changeHamburgerIcon = () => {
+    if (hamburgerIcon === hamburgerIconInit) {
+      setHamburgerIcon(`${hamburgerIcon} ${classes.change}`)
+    } else {
+    setHamburgerIcon(hamburgerIconInit);
+    }
+  }
+
+  return (
+    <div className={classes.toggleDiv}>
+      <button
+        type="button"
+        className={`btn btn-dark ${classes["menu-btn"]}`}
+        data-bs-toggle="collapse"
+        data-bs-target="#collapsedMenu"
+        aria-expanded="false"
+        aria-controls="collapsedMenu"
+        onClick={changeHamburgerIcon}
+      >
+        <div className={hamburgerIcon}>
+          <div className={`${classes.bar1}`}></div>
+          <div className={classes.bar2}></div>
+          <div className={classes.bar3}></div>
+        </div>
+        <div className={classes["menu-text"]}>Menu</div>
+      </button>
+      <MenuBtnList />
     </div>
   );
 }
