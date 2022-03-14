@@ -4,7 +4,7 @@ function Logo() {
   return (
     <a href="#">
       <div className={classes["logo-container"]}>
-          <img className={classes.logo} src="movie-db-logo.png" alt="" />
+          <img className={classes.logo} src="movie-db-logo-new.png" alt="" />
       </div>
     </a>
   );

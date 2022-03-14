@@ -1,22 +1,17 @@
-import FooterNavList from "./components/FooterNavList";
+import FooterNavList from "./components/FooterNavList/FooterNavList";
+import FooterSocialLinks from "./components/FooterSocialLinks/FooterSocialLinks";
 import classes from "./Footer.module.scss";
 
 function Footer() {
-  const navList = {
-    // Object with "value:link" pairs for footer navigation
-    Home: "#",
-    Features: "#",
-    Pricing: "#",
-    FAQs: "#",
-    About: "#",
-  };
+  const currentYear = new Date().getFullYear();
 
   return (
     <div className={classes["footer-container"]}>
       <div className="container">
         <footer className="py-3 my-4">
-          <FooterNavList navItems={navList} />
-          <p className="text-center text-muted">© 2021 Company, Inc</p>
+          <FooterSocialLinks />
+          <FooterNavList />
+          <p className="text-center text-secondary">© {currentYear} Company, Inc</p>
         </footer>
       </div>
     </div>
