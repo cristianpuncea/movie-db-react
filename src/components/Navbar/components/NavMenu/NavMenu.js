@@ -1,41 +1,42 @@
-import { useState } from "react";
-import MenuBtnList from "./components/MenuBtnList";
+import { Collapse } from "bootstrap";
+import { useEffect, useState } from "react";
+import MainMenuBtn from "./components/MainMenuBtn/MainMenuBtn";
+import MenuBtnList from "./components/MenuBtnList/MenuBtnList";
+import Search from "./components/Search/Search";
 import classes from "./NavMenu.module.scss";
 
 function NavMenu() {
 
-  const hamburgerIconInit = `${classes["container-hamburger"]}`;
+  const [menuActivation, setMenuActivation] = useState(false);
+  // const [hamburgerIcon, setHamburgerIcon] = useState("");
 
-  const [hamburgerIcon, setHamburgerIcon] = useState(hamburgerIconInit);
+  useEffect(() => {
+    const myCollapse = document.getElementById("collapsedMenu");
+    const bsCollapse = new Collapse(myCollapse, { toggle: false });
+    menuActivation ? bsCollapse.show() : bsCollapse.hide();
+  }, [menuActivation]);    
 
-  const changeHamburgerIcon = () => {
-    if (hamburgerIcon === hamburgerIconInit) {
-      setHamburgerIcon(`${hamburgerIcon} ${classes.change}`)
-    } else {
-    setHamburgerIcon(hamburgerIconInit);
-    }
-  }
+  // const changeHamburgerIcon = () => {
+  //   if (hamburgerIcon === hamburgerIconInit) {
+  //     setHamburgerIcon(`${hamburgerIcon} change`);
+  //     // setHamburgerIcon(`hm changed`);
+  //   } else {
+  //     setHamburgerIcon(hamburgerIconInit);
+  //   }
+  // };
+
+  // const updateMenuActivation = () => {
+
+  // }
 
   return (
-    <div className={classes.toggleDiv}>
-      <button
-        type="button"
-        className={`btn btn-dark ${classes["menu-btn"]}`}
-        data-bs-toggle="collapse"
-        data-bs-target="#collapsedMenu"
-        aria-expanded="false"
-        aria-controls="collapsedMenu"
-        onClick={changeHamburgerIcon}
-      >
-        <div className={hamburgerIcon}>
-          <div className={`${classes.bar1}`}></div>
-          <div className={classes.bar2}></div>
-          <div className={classes.bar3}></div>
-        </div>
-        <div className={classes["menu-text"]}>Menu</div>
-      </button>
-      <MenuBtnList />
-    </div>
+    <>
+      <div className={classes.toggleDiv}>
+        <MainMenuBtn menuActivation={menuActivation} handleMenuActivation={setMenuActivation} />
+        <MenuBtnList />
+      </div>
+      <Search menuActivation={menuActivation} handleMenuActivation={setMenuActivation} />
+    </>
   );
 }
 

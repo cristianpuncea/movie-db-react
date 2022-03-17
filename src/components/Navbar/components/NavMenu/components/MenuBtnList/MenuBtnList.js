@@ -1,5 +1,5 @@
 import classes from "./MenuBtnList.module.scss";
-import MenuBtns from "./MenuBtns";
+import MenuBtns from "../MenuBtns/MenuBtns";
 
 function MenuBtnList() {
   const menuList = {
