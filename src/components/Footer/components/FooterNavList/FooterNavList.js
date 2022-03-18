@@ -1,7 +1,7 @@
 import classes from "./FooterNavList.module.scss";
+import Nav from "react-bootstrap/Nav";
 
 function FooterNavList() {
-  // Object with "value:link" pairs for footer navigation
   const navList = [
     {
       title: "Get the MovieDb App",
@@ -66,18 +66,22 @@ function FooterNavList() {
   ];
 
   return (
-    <ul className="nav justify-content-center border-bottom pb-3 mb-3">
+    <Nav as="ul" className="nav justify-content-center border-bottom pb-3 mb-3">
       {navList.map((item, idx) => {
         return (
-          <li className="nav-item" key={idx}>
-            <a href={item.url} className={`nav-link px-2 ${classes.link}`}>              
+          <Nav.Item as="li" key={idx}>
+            <a href={item.url} className={`nav-link px-2 ${classes.link}`}>
               {item.title}
-              {item.external && <i className={`bi bi-box-arrow-up-right ${classes["icon-ext-link"]}`}></i>}
+              {item.external && (
+                <i
+                  className={`bi bi-box-arrow-up-right ${classes["icon-ext-link"]}`}
+                ></i>
+              )}
             </a>
-          </li>
+          </Nav.Item>
         );
       })}
-    </ul>
+    </Nav>
   );
 }
 

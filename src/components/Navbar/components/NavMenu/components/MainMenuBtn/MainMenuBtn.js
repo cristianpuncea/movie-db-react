@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Button from "react-bootstrap/Button";
 import classes from "./MainMenuBtn.module.scss";
 
 function MainMenuBtn({ menuActivation, handleMenuActivation }) {
@@ -16,40 +17,23 @@ function MainMenuBtn({ menuActivation, handleMenuActivation }) {
     }
   }, [menuActivation]);
 
-  // const handleHamburgerIconClass = () => {
-  //   handleMenuActivation(!menuActivation);
-  //   if (hamburgerIconClass === hamburgerIconClassInit) {
-  //     setHamburgerIconClass(`${hamburgerIconClass} ${classes.change}`);
-  //   } else {
-  //     setHamburgerIconClass(hamburgerIconClassInit);
-  //   }
-  // };
-
-  // const handleHamburgerIconClass = () => {
-  //   if (hamburgerIconClass === hamburgerIconClassInit) {
-  //     setHamburgerIconClass(`${hamburgerIconClass} ${classes.change}`);
-  //   } else {
-  //     setHamburgerIconClass(hamburgerIconClassInit);
-  //   }
-  // };
-
   return (
-    <button
-      type="button"
-      className={`btn btn-dark ${classes["menu-btn"]}`}
-      // data-bs-toggle="collapse"
-      // data-bs-target="#collapsedMenu"
-      aria-expanded="false"
-      aria-controls="collapsedMenu"
-      onClick={() => handleMenuActivation(!menuActivation)}
-    >
-      <div className={hamburgerIconClass}>
-        <div className={classes.bar1}></div>
-        <div className={classes.bar2}></div>
-        <div className={classes.bar3}></div>
-      </div>
-      <div className={classes["menu-text"]}>Menu</div>
-    </button>
+    <>
+      <Button
+        className={classes["menu-btn"]}
+        variant="dark"
+        aria-controls="collapsedMenu"
+        aria-expanded="false"
+        onClick={() => handleMenuActivation(!menuActivation)}
+      >
+        <div className={hamburgerIconClass}>
+          <div className={classes.bar1}></div>
+          <div className={classes.bar2}></div>
+          <div className={classes.bar3}></div>
+        </div>
+        <div className={classes["menu-text"]}>Menu</div>
+      </Button>
+    </>
   );
 }
 

@@ -1,34 +1,31 @@
 // import { Collapse } from "bootstrap";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import classes from "./Search.module.scss";
+import InputGroup from "react-bootstrap/InputGroup";
+import FormControl from "react-bootstrap/FormControl";
+import Button from "react-bootstrap/Button";
 
-function Search({menuActivation, handleMenuActivation}) {
+function Search({ menuActivation, handleMenuActivation }) {
   const [searchPlaceholder, setSearchPlaceholder] = useState("Search");
-  // const [toggle, setToggle] = useState(false);
-
-//   useEffect(() => {
-//     var myCollapse = document.getElementById('collapsedMenu')
-//     var bsCollapse = new Collapse(myCollapse, {toggle: false})
-//     if (toggle) {bsCollapse.hide()}
-// })
 
   return (
-    <div className="input-group">
-      <input
-        type="search"
-        className={`form-control me-1 ${classes["input-search"]}`}
+    <InputGroup>
+      <FormControl
+        className={`me-1 ${classes["input-search"]}`}
         placeholder={searchPlaceholder}
         aria-label="Search"
         aria-describedby="search-addon"
-        onFocus={() => handleMenuActivation(false)}
+        type="search"
+        onFocus={() => {
+          setSearchPlaceholder("");
+          handleMenuActivation(false);
+        }}
         onBlur={() => setSearchPlaceholder("Search")}
-        // onClick={() => setToggle(toggle => !toggle)}
-        // data-bs-target="#collapsedMenu"
       />
-      <button type="button" className="btn btn-dark">
-      <i className="bi bi-search"></i>
-      </button>
-    </div>
+      <Button variant="dark">
+        <i className="bi bi-search"></i>
+      </Button>
+    </InputGroup>
   );
 }
 

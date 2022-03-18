@@ -1,8 +1,10 @@
+import Container from "react-bootstrap";
+
 function Login() {
   return (
-    <div className="login">
+    <Container className="login">
       <button>Login</button>
-    </div>
+    </Container>
   )
 }
 

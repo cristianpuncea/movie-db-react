@@ -8,26 +8,12 @@ import classes from "./NavMenu.module.scss";
 function NavMenu() {
 
   const [menuActivation, setMenuActivation] = useState(false);
-  // const [hamburgerIcon, setHamburgerIcon] = useState("");
 
   useEffect(() => {
     const myCollapse = document.getElementById("collapsedMenu");
     const bsCollapse = new Collapse(myCollapse, { toggle: false });
     menuActivation ? bsCollapse.show() : bsCollapse.hide();
   }, [menuActivation]);    
-
-  // const changeHamburgerIcon = () => {
-  //   if (hamburgerIcon === hamburgerIconInit) {
-  //     setHamburgerIcon(`${hamburgerIcon} change`);
-  //     // setHamburgerIcon(`hm changed`);
-  //   } else {
-  //     setHamburgerIcon(hamburgerIconInit);
-  //   }
-  // };
-
-  // const updateMenuActivation = () => {
-
-  // }
 
   return (
     <>
