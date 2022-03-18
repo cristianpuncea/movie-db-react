@@ -1,7 +1,8 @@
 import classes from "./MenuBtnList.module.scss";
 import MenuBtns from "../MenuBtns/MenuBtns";
+import Collapse from "react-bootstrap/Collapse";
 
-function MenuBtnList() {
+function MenuBtnList({menuActivation}) {
   const menuList = {
     Movies: [
       "Top 250 Movies",
@@ -20,12 +21,11 @@ function MenuBtnList() {
   };
 
   return (
-    <div
-      className={`collapse collapse-horizontal ${classes["menu-main-items"]}`}
-      id="collapsedMenu"
-    >
-      <MenuBtns menuList={menuList} />
-    </div>
+    <Collapse in={menuActivation} dimension="width">
+      <div id="collapsedMenu" className={classes["menu-main-items"]}>
+        <MenuBtns menuList={menuList} />
+      </div>
+    </Collapse>
   );
 }
 

@@ -18,12 +18,11 @@ function MainMenuBtn({ menuActivation, handleMenuActivation }) {
   }, [menuActivation]);
 
   return (
-    <>
       <Button
         className={classes["menu-btn"]}
         variant="dark"
         aria-controls="collapsedMenu"
-        aria-expanded="false"
+        aria-expanded={menuActivation}
         onClick={() => handleMenuActivation(!menuActivation)}
       >
         <div className={hamburgerIconClass}>
@@ -33,7 +32,6 @@ function MainMenuBtn({ menuActivation, handleMenuActivation }) {
         </div>
         <div className={classes["menu-text"]}>Menu</div>
       </Button>
-    </>
   );
 }
 

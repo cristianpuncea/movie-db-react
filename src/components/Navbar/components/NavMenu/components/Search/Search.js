@@ -1,4 +1,3 @@
-// import { Collapse } from "bootstrap";
 import { useState } from "react";
 import classes from "./Search.module.scss";
 import InputGroup from "react-bootstrap/InputGroup";

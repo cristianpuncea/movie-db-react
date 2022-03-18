@@ -1,5 +1,4 @@
-import { Collapse } from "bootstrap";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MainMenuBtn from "./components/MainMenuBtn/MainMenuBtn";
 import MenuBtnList from "./components/MenuBtnList/MenuBtnList";
 import Search from "./components/Search/Search";
@@ -9,17 +8,11 @@ function NavMenu() {
 
   const [menuActivation, setMenuActivation] = useState(false);
 
-  useEffect(() => {
-    const myCollapse = document.getElementById("collapsedMenu");
-    const bsCollapse = new Collapse(myCollapse, { toggle: false });
-    menuActivation ? bsCollapse.show() : bsCollapse.hide();
-  }, [menuActivation]);    
-
   return (
     <>
       <div className={classes.toggleDiv}>
         <MainMenuBtn menuActivation={menuActivation} handleMenuActivation={setMenuActivation} />
-        <MenuBtnList />
+        <MenuBtnList menuActivation={menuActivation} />
       </div>
       <Search menuActivation={menuActivation} handleMenuActivation={setMenuActivation} />
     </>
