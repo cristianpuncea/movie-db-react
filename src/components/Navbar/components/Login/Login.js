@@ -1,11 +1,13 @@
-import Container from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
+import classes from "./Login.module.scss"
 
 function Login() {
   return (
-    <Container className="login">
-      <button>Login</button>
-    </Container>
-  )
+      <Link to="/login">
+        <Button className={classes["login-btn"]} variant="dark">Login</Button>
+      </Link>
+  );
 }
 
 export default Login;

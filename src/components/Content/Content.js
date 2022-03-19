@@ -12,30 +12,37 @@ import NewsTVShows from "../../pages/TVShows/NewsTVShows/NewsTVShows";
 import BornTodayActors from "../../pages/Actors/BornTodayActors/BornTodayActors";
 import MostPopularActors from "../../pages/Actors/MostPopularActors/MostPopularActors";
 import NewsActors from "../../pages/Actors/NewsActors/NewsActors";
+import Login from "../../pages/Login/Login";
+import Account from "../../pages/Account/Account";
+import { Container } from "react-bootstrap";
 
 function Content() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="movies">
-        <Route path="top-250" element={<TopMovies />} />
-        <Route path="most-popular" element={<MostPopularMovies />} />
-        <Route path="by-genre" element={<ByGenreMovies />} />
-        <Route path="coming-soon" element={<ComingSoonMovies />} />
-        <Route path="news" element={<NewsMovies />} />
-      </Route>
-      <Route path="tv-shows">
-        <Route path="top-250" element={<TopTVShows />} />
-        <Route path="most-popular" element={<MostPopularTVShows />} />
-        <Route path="by-genre" element={<ByGenreTVShows />} />
-        <Route path="news" element={<NewsTVShows />} />
-      </Route>
-      <Route path="actors">
-        <Route path="born-today" element={<BornTodayActors />} />
-        <Route path="most-popular" element={<MostPopularActors />} />
-        <Route path="news" element={<NewsActors />} />
-      </Route>
-    </Routes>
+    <Container fluid="lg">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="movies">
+          <Route path="top-250" element={<TopMovies />} />
+          <Route path="most-popular" element={<MostPopularMovies />} />
+          <Route path="by-genre" element={<ByGenreMovies />} />
+          <Route path="coming-soon" element={<ComingSoonMovies />} />
+          <Route path="news" element={<NewsMovies />} />
+        </Route>
+        <Route path="tv-shows">
+          <Route path="top-250" element={<TopTVShows />} />
+          <Route path="most-popular" element={<MostPopularTVShows />} />
+          <Route path="by-genre" element={<ByGenreTVShows />} />
+          <Route path="news" element={<NewsTVShows />} />
+        </Route>
+        <Route path="actors">
+          <Route path="born-today" element={<BornTodayActors />} />
+          <Route path="most-popular" element={<MostPopularActors />} />
+          <Route path="news" element={<NewsActors />} />
+        </Route>
+        <Route path="login" element={<Login />} />
+        <Route path="account" element={<Account />} />
+      </Routes>
+    </Container>
   );
 }
 
