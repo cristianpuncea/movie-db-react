@@ -1,24 +1,34 @@
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
+import { Link } from "react-router-dom";
+import classes from "./MenuBtns.module.scss";
 
-function MenuBtns({ menuList }) {
+function MenuBtns({ menuList, menuListArray }) {
   return (
     <>
-      {Object.keys(menuList).map((objKey, idx) => {
+      {menuListArray.map((obj, idx) => {
         return (
           <DropdownButton
             as={ButtonGroup}
-            title={objKey}
+            title={obj.title}
             key={idx}
             variant="secondary"
             menuVariant="dark"
           >
-            {menuList[objKey].map((item, idx) => {
+            {obj.menuItems.map((item, idx) => {
               return (
-              <Dropdown.Item key={idx}>
-                {item}
-              </Dropdown.Item>
+                <Link
+                  to={`/${obj.title.toLowerCase().replace(" ", "-")}/${
+                    item.path
+                  }`}
+                  className={classes["menu-links"]}
+                  key={idx}
+                >
+                  <Dropdown.Item as="li">
+                    {item.name}
+                  </Dropdown.Item>
+                </Link>
               );
             })}
           </DropdownButton>
