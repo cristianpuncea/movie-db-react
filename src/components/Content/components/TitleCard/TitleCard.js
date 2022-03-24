@@ -38,7 +38,9 @@ export default function TitleCard({ id, title, imgUrl, released, vote }) {
           />
         </Link>
         <Card.Body>
-          <Card.Title className="text-light">{title}</Card.Title>
+          <Link to={`/movies/${id}`}>
+            <Card.Title className="text-light">{title}</Card.Title>
+          </Link>
           <Card.Text className="text-light">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
