@@ -5,13 +5,13 @@ import ListGroup from "react-bootstrap/ListGroup";
 function FooterSocialLinks() {
   return (
     <Container>
-        <ListGroup as="ul" className={classes.social}>
-          <ListGroup.Item as="li"><a href="#"><i className="bi bi-facebook"></i></a></ListGroup.Item>
-          <ListGroup.Item as="li"><a href="#"><i className="bi bi-instagram"></i></a></ListGroup.Item>
-          <ListGroup.Item as="li"><a href="#"><i className="bi bi-twitch"></i></a></ListGroup.Item>
-          <ListGroup.Item as="li"><a href="#"><i className="bi bi-twitter"></i></a></ListGroup.Item>
-          <ListGroup.Item as="li"><a href="#"><i className="bi bi-youtube"></i></a></ListGroup.Item>
-        </ListGroup>
+        <ul className={classes.social}>
+          <li><a href="#"><i className="bi bi-facebook"></i></a></li>
+          <li><a href="#"><i className="bi bi-instagram"></i></a></li>
+          <li><a href="#"><i className="bi bi-twitch"></i></a></li>
+          <li><a href="#"><i className="bi bi-twitter"></i></a></li>
+          <li><a href="#"><i className="bi bi-youtube"></i></a></li>
+        </ul>
     </Container>
   )
 }
