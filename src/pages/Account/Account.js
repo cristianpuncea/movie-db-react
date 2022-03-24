@@ -9,7 +9,7 @@ export default function Account() {
     if (!token) {
       navigate("/login");
     };
-  }, []);
+  });
 
   return (
     <div>

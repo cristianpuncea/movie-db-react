@@ -5,9 +5,10 @@ import Col from "react-bootstrap/Col";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Login({handleLoginStatus}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
   const savedToken = localStorage.getItem("token");
 
@@ -23,15 +24,22 @@ export default function Login() {
       .then((data) => {
         if (data.token) {
           localStorage.setItem("token", data.token);
+          handleLoginStatus(true);
+          navigate("/account");
         }
-        navigate("/account");
+        if (data.error) {
+          setLoginError("Wrong email or password.");
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   };
 
   useEffect(() => {
-    if (savedToken) {navigate("/account")}
-  })
+    if (savedToken) {
+      handleLoginStatus(true);
+      navigate("/account");
+    }
+  });
 
   return (
     <Row className="justify-content-center py-4">
@@ -55,6 +63,7 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <Form.Text className="text-danger fst-italic lh-5">{loginError}</Form.Text>
           </Form.Group>
           <Button variant="success" type="submit">
             Submit

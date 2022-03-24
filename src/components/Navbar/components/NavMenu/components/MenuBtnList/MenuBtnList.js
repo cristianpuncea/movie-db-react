@@ -24,7 +24,7 @@ function MenuBtnList({ menuActivation }) {
     {
       title: "Movies",
       menuItems: [
-        { name: "Top 250 Movies", path: "top-250" },
+        { name: "Top Movies", path: "top" },
         { name: "Most Popular Movies", path: "most-popular" },
         { name: "Browse Movies by Genre", path: "by-genre" },
         { name: "Coming Soon", path: "coming-soon" },
@@ -34,7 +34,7 @@ function MenuBtnList({ menuActivation }) {
     {
       title: "TV Shows",
       menuItems: [
-        { name: "Top 250 TV Shows", path: "top-250" },
+        { name: "Top TV Shows", path: "top" },
         { name: "Most Popular TV Shows", path: "most-popular" },
         { name: "Browse TV Shows by Genre", path: "by-genre" },
         { name: "TV News", path: "news" },
