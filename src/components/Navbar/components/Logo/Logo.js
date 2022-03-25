@@ -5,7 +5,7 @@ import logo from "./movie-db-logo-new.png";
 
 function Logo() {
   return (
-    <Link to="/">
+    <Link to="/movie-db-react">
       <div className={classes["logo-container"]}>
         <Image className={classes.logo} src={logo} alt="" />
       </div>

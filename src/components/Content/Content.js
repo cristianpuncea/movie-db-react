@@ -21,7 +21,7 @@ function Content({loginStatus, handleLoginStatus}) {
   return (
     <Container fluid="lg">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/movie-db-react" element={<Home />} />
         <Route path="movies">
           <Route path="top" element={<TopMovies />} />
           <Route path="most-popular" element={<MostPopularMovies />} />
@@ -45,6 +45,7 @@ function Content({loginStatus, handleLoginStatus}) {
         <Route path="movies/:id" element={<MoviePage />} />
         {/* <Route path="tv-shows/:id" element={<TvShowPage />} />
         <Route path="actors/:id" element={<ActorPage />} /> */}
+        <Route path="*" element={<div className="d-flex justify-content-center fs-1">Page not found.</div>} />
       </Routes>
     </Container>
   );
