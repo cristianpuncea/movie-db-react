@@ -17,7 +17,7 @@ function TitleCast({ dataSource }) {
           <span>Top Cast</span>
           <i className="bi bi-caret-right-fill ps-2"></i>
         </Link>
-      </h5>{" "}
+      </h5>
       {reducedCastList.map((actor, idx) => {
         if (!actor.profile_path) {
           imgSrc = peoplePlaceholderImg;

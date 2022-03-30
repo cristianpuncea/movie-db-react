@@ -74,7 +74,7 @@ function TitlePageHeader({ dataSource }) {
                 <div>Rating</div>
                 <div>
                   <i className={`${classes.rating} bi bi-star-half fs-5`}></i>
-                  <span className="fw-bold">{dataSource.vote_average}</span>
+                  <span className="fw-bold">{dataSource.vote_average.toFixed(1)}</span>
                   <span className="fw-lighter">/10</span>
                 </div>
               </Col>

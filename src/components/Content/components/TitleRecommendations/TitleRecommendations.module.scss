@@ -1,0 +1,46 @@
+// .container {
+//   scrollbar-width: thin;
+//   scrollbar-color: red yellow;
+// }
+
+.container::-webkit-scrollbar {
+  background-color: transparent;
+  height: 10px;
+  margin-top: 5px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: rgb(100, 100, 100);
+  border-radius: 10px;
+}
+
+i.rating {
+  color: yellow;
+  padding-right: 6px;
+}
+
+.card-img:hover {
+cursor: pointer;
+opacity: 0.5;
+}
+
+.more-link,
+.title-link {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.more-link:active,
+.title-link:active {
+  border: 2px dotted grey;
+}
+
+.more-link:hover span,
+.title-link:hover {
+  color:#FFF;
+  opacity: 0.5;
+}
+
+.more-link:hover i {
+  color: rgb(238, 238, 14);
+}

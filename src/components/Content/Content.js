@@ -18,6 +18,7 @@ import { Container } from "react-bootstrap";
 import MoviePage from "../../pages/Movies/MoviePage/MoviePage";
 import TopCastCrew from "./components/TopCastCrew/TopCastCrew";
 import ActorPage from "../../pages/Actors/ActorPage/ActorPage";
+import SimilarTitles from "./components/SimilarTitles/SimilarTitles";
 
 function Content({ loginStatus, handleLoginStatus }) {
   return (
@@ -54,6 +55,7 @@ function Content({ loginStatus, handleLoginStatus }) {
         <Route path="account" element={<Account />} />
         <Route path="movies/:movieId" element={<MoviePage />} />
         <Route path="movies/:movieId/top-cast" element={<TopCastCrew />} />
+        <Route path="movies/:movieId/similar" element={<SimilarTitles />} />
         {/* <Route path="tv-shows/:tvId" element={<TvShowPage />} /> */}
         <Route path="actors/:personId" element={<ActorPage />} />
         <Route

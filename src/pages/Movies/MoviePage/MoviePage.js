@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col, Image, ListGroup, Card } from "react-bootstrap";
 import ErrorPage from "../../../components/ErrorPage/ErrorPage";
 import LoadingPage from "../../../components/LoadingPage/LoadingPage";
-import classes from "./MoviePage.module.scss";
 import TitlePageHeader from "../../../components/Content/components/TitlePageHeader/TitlePageHeader";
 import TitleCast from "../../../components/Content/components/TitleCast/TitleCast";
 import TitleRecommendations from "../../../components/Content/components/TitleRecommendations/TitleRecommendations";
+import TitleVideos from "../../../components/Content/components/TitleVideos/TitleVideos";
 
 export default function MoviePage() {
   const { movieId } = useParams();
@@ -35,6 +35,7 @@ export default function MoviePage() {
         <Container className="my-5">
           <TitlePageHeader dataSource={details}/>
           <TitleCast dataSource={details} />
+          <TitleVideos dataSource={details} />
           <TitleRecommendations dataSource={details} />
         </Container>
       </>
