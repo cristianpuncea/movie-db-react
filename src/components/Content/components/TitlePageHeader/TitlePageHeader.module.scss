@@ -1,0 +1,43 @@
+.action-btns {
+  column-gap: 0.5rem;
+}
+
+.genre {
+  border: 2px solid yellow;
+  margin-right: 8px;
+  border-radius: 12px;
+}
+
+.title-details li {
+  margin: 0 !important;
+}
+
+.title-details {
+  margin: 0;
+}
+
+.original-title {
+  padding: 0;
+  margin: 0;
+}
+
+.action-btns i.rating {
+  color: yellow;
+  padding-right: 6px;
+}
+
+.favorites {
+  background-color: rgb(47, 104, 114);
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+}
+
+.genre:hover, .favorites:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.popularity-icon {
+  width: 28px;
+}

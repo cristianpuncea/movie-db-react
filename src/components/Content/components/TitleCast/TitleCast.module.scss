@@ -1,0 +1,35 @@
+.image {
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+  object-position: center 25%;
+}
+
+.more-link,
+.cast-link {
+  text-decoration: none;
+}
+
+.more-link:hover i {
+  color: rgb(238, 238, 14);
+}
+
+.more-link:active,
+.cast-link:active {
+  border: 2px dotted grey;
+}
+
+.more-link, .cast-link h5 {
+  color: #FFF;
+}
+
+.more-link:hover span,
+.cast-link:hover img,
+.cast-link:hover h5 {
+  color:#FFF;
+  opacity: 0.5;
+}
+
+.more-card {
+  min-height: 120px;
+}

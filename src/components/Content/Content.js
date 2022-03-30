@@ -16,8 +16,10 @@ import Login from "../../pages/Login/Login";
 import Account from "../../pages/Account/Account";
 import { Container } from "react-bootstrap";
 import MoviePage from "../../pages/Movies/MoviePage/MoviePage";
+import TopCastCrew from "./components/TopCastCrew/TopCastCrew";
+import ActorPage from "../../pages/Actors/ActorPage/ActorPage";
 
-function Content({loginStatus, handleLoginStatus}) {
+function Content({ loginStatus, handleLoginStatus }) {
   return (
     <Container fluid="lg">
       <Routes>
@@ -40,12 +42,28 @@ function Content({loginStatus, handleLoginStatus}) {
           <Route path="most-popular" element={<MostPopularActors />} />
           <Route path="news" element={<NewsActors />} />
         </Route>
-        <Route path="login" element={<Login loginStatus={loginStatus} handleLoginStatus={handleLoginStatus} />} />
+        <Route
+          path="login"
+          element={
+            <Login
+              loginStatus={loginStatus}
+              handleLoginStatus={handleLoginStatus}
+            />
+          }
+        />
         <Route path="account" element={<Account />} />
-        <Route path="movies/:id" element={<MoviePage />} />
-        {/* <Route path="tv-shows/:id" element={<TvShowPage />} />
-        <Route path="actors/:id" element={<ActorPage />} /> */}
-        <Route path="*" element={<div className="d-flex justify-content-center fs-1">Page not found.</div>} />
+        <Route path="movies/:movieId" element={<MoviePage />} />
+        <Route path="movies/:movieId/top-cast" element={<TopCastCrew />} />
+        {/* <Route path="tv-shows/:tvId" element={<TvShowPage />} /> */}
+        <Route path="actors/:personId" element={<ActorPage />} />
+        <Route
+          path="*"
+          element={
+            <div className="d-flex justify-content-center fs-1">
+              Page not found.
+            </div>
+          }
+        />
       </Routes>
     </Container>
   );
