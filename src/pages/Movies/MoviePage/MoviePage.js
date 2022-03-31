@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Container, Row, Col, Image, ListGroup, Card } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import ErrorPage from "../../../components/ErrorPage/ErrorPage";
 import LoadingPage from "../../../components/LoadingPage/LoadingPage";
 import TitlePageHeader from "../../../components/Content/components/TitlePageHeader/TitlePageHeader";
@@ -33,9 +33,9 @@ export default function MoviePage() {
       <>
         {console.log({ details })}
         <Container className="my-5">
-          <TitlePageHeader dataSource={details}/>
-          <TitleCast dataSource={details} />
+          <TitlePageHeader dataSource={details} />
           <TitleVideos dataSource={details} />
+          <TitleCast dataSource={details} />
           <TitleRecommendations dataSource={details} />
         </Container>
       </>

@@ -1,0 +1,47 @@
+.more-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.more-link:hover i {
+  color: rgb(238, 238, 14);
+}
+
+.more-link:active {
+  border: 2px dotted grey;
+}
+
+.more-link:hover span {
+  color: #fff;
+  opacity: 0.5;
+}
+
+.carousel-img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  border: 2px solid rgb(255, 255, 125);
+}
+
+.img-container {
+  width: 100%;
+  position: relative;
+}
+
+.img-container .video-type {
+  position: absolute;
+  bottom: 5px;
+  left: 20px;
+}
+
+.img-container:hover, .text-name:hover {
+  cursor: pointer;
+}
+
+.img-container:hover img, .text-name:hover {
+  opacity: 0.5;
+}
+
+.img-container:hover .video-type i {
+  color: rgb(238, 238, 14);
+}

@@ -7,9 +7,21 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 function TitlePageHeader({ dataSource }) {
-  const certification = dataSource.release_dates.results.find(
-    (el) => el.iso_3166_1 === "US"
-  ).release_dates[0].certification;
+  const certification = dataSource.release_dates.results.reduce(function (
+    prev,
+    curr
+  ) {
+    if (prev.iso_3166_1 === "US" && prev.release_dates[0].certification) {
+      return prev;
+    }else if (curr.iso_3166_1 === "US" && curr.release_dates[0].certification) {
+      return curr;
+    } else if (curr.release_dates[0].certification) {
+      return curr;
+    } else {
+      return prev;
+    }
+  },
+  {}).release_dates[0].certification;
 
   const minToHrs = (mins) => {
     const hours = mins / 60;
@@ -74,7 +86,9 @@ function TitlePageHeader({ dataSource }) {
                 <div>Rating</div>
                 <div>
                   <i className={`${classes.rating} bi bi-star-half fs-5`}></i>
-                  <span className="fw-bold">{dataSource.vote_average.toFixed(1)}</span>
+                  <span className="fw-bold">
+                    {dataSource.vote_average.toFixed(1)}
+                  </span>
                   <span className="fw-lighter">/10</span>
                 </div>
               </Col>

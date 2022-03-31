@@ -19,6 +19,7 @@ import MoviePage from "../../pages/Movies/MoviePage/MoviePage";
 import TopCastCrew from "./components/TopCastCrew/TopCastCrew";
 import ActorPage from "../../pages/Actors/ActorPage/ActorPage";
 import SimilarTitles from "./components/SimilarTitles/SimilarTitles";
+import VideosPage from "./components/VideosPage/VideosPage";
 
 function Content({ loginStatus, handleLoginStatus }) {
   return (
@@ -56,6 +57,7 @@ function Content({ loginStatus, handleLoginStatus }) {
         <Route path="movies/:movieId" element={<MoviePage />} />
         <Route path="movies/:movieId/top-cast" element={<TopCastCrew />} />
         <Route path="movies/:movieId/similar" element={<SimilarTitles />} />
+        <Route path="movies/:movieId/videos" element={<VideosPage />} />
         {/* <Route path="tv-shows/:tvId" element={<TvShowPage />} /> */}
         <Route path="actors/:personId" element={<ActorPage />} />
         <Route
