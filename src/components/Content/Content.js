@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "../../pages/Home/Home";
 import MostPopularMovies from "../../pages/Movies/MostPopularMovies/MostPopularMovies";
 import TopMovies from "../../pages/Movies/TopMovies/TopMovies";
@@ -19,7 +19,7 @@ import MoviePage from "../../pages/Movies/MoviePage/MoviePage";
 import TopCastCrew from "./components/TopCastCrew/TopCastCrew";
 import ActorPage from "../../pages/Actors/ActorPage/ActorPage";
 import SimilarTitles from "./components/SimilarTitles/SimilarTitles";
-import VideosPage from "./components/VideosPage/VideosPage";
+import ImagesPage from "./components/ImagesPage/ImagesPage";
 
 function Content({ loginStatus, handleLoginStatus }) {
   return (
@@ -27,7 +27,8 @@ function Content({ loginStatus, handleLoginStatus }) {
       <Routes>
         <Route path="/movie-db-react" element={<Home />} />
         <Route path="movies">
-          <Route path="top" element={<TopMovies />} />
+          <Route path="top" element={<Navigate to="1" />} />
+          <Route path="top/:topMoviesPageId" element={<TopMovies />} />
           <Route path="most-popular" element={<MostPopularMovies />} />
           <Route path="by-genre" element={<ByGenreMovies />} />
           <Route path="coming-soon" element={<ComingSoonMovies />} />
@@ -57,7 +58,7 @@ function Content({ loginStatus, handleLoginStatus }) {
         <Route path="movies/:movieId" element={<MoviePage />} />
         <Route path="movies/:movieId/top-cast" element={<TopCastCrew />} />
         <Route path="movies/:movieId/similar" element={<SimilarTitles />} />
-        <Route path="movies/:movieId/videos" element={<VideosPage />} />
+        <Route path="movies/:movieId/images" element={<ImagesPage />} />
         {/* <Route path="tv-shows/:tvId" element={<TvShowPage />} /> */}
         <Route path="actors/:personId" element={<ActorPage />} />
         <Route

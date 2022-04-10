@@ -4,20 +4,22 @@ import "./App.scss";
 import Content from "./components/Content/Content";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
-const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
-const savedToken = localStorage.getItem("token");
+  const savedToken = localStorage.getItem("token");
 
-useEffect(() => {
-  if (savedToken) {
-    setLoggedIn(true);
-  }
-}, [savedToken])
+  useEffect(() => {
+    if (savedToken) {
+      setLoggedIn(true);
+    }
+  }, [savedToken]);
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar loginStatus={loggedIn} handleLoginStatus={setLoggedIn} />
       <Content loginStatus={loggedIn} handleLoginStatus={setLoggedIn} />
       <Footer />

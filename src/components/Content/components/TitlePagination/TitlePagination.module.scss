@@ -1,0 +1,42 @@
+// .pagination li a:visited {
+//   background-color: black;
+//   color: white;
+// }
+
+// .pagination li a {
+//   color: white;
+//   background-color: black;
+// }
+
+// .pagination li a:focus {
+//   color: white;
+//   background-color: black;
+// }
+
+// .pagination li.active a {
+//   background-color: aqua;
+// }
+
+
+.pagination li a {
+  color: white;
+  background-color: black;
+}
+
+
+
+.pagination li a:focus {
+  color: white;
+  background-color: black;
+}
+
+.pagination li a:hover {
+  color: black;
+  background-color: white;
+}
+
+.pagination li.active a {
+  background-color: yellow;
+  color: black;
+  pointer-events: none;
+}

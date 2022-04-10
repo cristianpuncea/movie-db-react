@@ -1,0 +1,31 @@
+.more-link, .more-link:visited {
+  text-decoration: none;
+  color: #fff;
+}
+
+.more-link:hover i {
+  color: rgb(238, 238, 14);
+}
+
+.more-link:active {
+  border: 2px dotted grey;
+}
+
+.more-link:hover span.title {
+  color: #fff;
+  opacity: 0.5;
+}
+
+.more-link:hover span.img-total, .img-total {
+  color: #fff;
+}
+
+.carousel-img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.carousel-dotList {
+  position: absolute;
+  bottom: 0px;
+}

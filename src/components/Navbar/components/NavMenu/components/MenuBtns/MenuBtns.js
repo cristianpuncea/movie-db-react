@@ -4,7 +4,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { Link } from "react-router-dom";
 import classes from "./MenuBtns.module.scss";
 
-function MenuBtns({ menuList, menuListArray }) {
+function MenuBtns({ menuListArray }) {
   return (
     <>
       {menuListArray.map((obj, idx) => {

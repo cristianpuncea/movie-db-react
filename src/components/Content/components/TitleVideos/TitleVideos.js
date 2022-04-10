@@ -1,6 +1,5 @@
 import Row from "react-bootstrap/Row";
 import Carousel from "react-multi-carousel";
-import { Link } from "react-router-dom";
 import classes from "./TitleVideos.module.scss";
 import "react-multi-carousel/lib/styles.css";
 import { useState } from "react";
@@ -9,6 +8,7 @@ import Modal from "react-bootstrap/Modal";
 
 function TitleVideos({ dataSource }) {
   const [show, setShow] = useState(false);
+  const [clickedVideo, setClickedVideo] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,10 +16,7 @@ function TitleVideos({ dataSource }) {
   return (
     <Row className="mt-4 justify-content-center">
       <h5>
-        <Link to="videos" className={classes["more-link"]}>
           <span>Videos</span>
-          <i className="bi bi-caret-right-fill ps-2"></i>
-        </Link>
       </h5>
       <Carousel
         additionalTransfrom={0}
@@ -69,15 +66,18 @@ function TitleVideos({ dataSource }) {
         slidesToSlide={1}
         swipeable
       >
-        {dataSource.videos.results.map((video, idx) => {
+        {dataSource.videos.results.map((video) => {
           return (
-            <div key={idx} className="mx-2 px-1">
+            <div key={video.key} className="mx-2 px-1">
               <div className={`${classes["img-container"]}`}>
                 <img
                   src={`https://img.youtube.com/vi/${video.key}/hqdefault.jpg`}
                   alt="slide"
                   className={`${classes["carousel-img"]}`}
-                  onClick={handleShow}
+                  onClick={() => {
+                    handleShow();
+                    setClickedVideo(video);
+                  }}
                 />
                 <div
                   className={`${classes["video-type"]} d-flex flex-row align-items-center`}
@@ -89,6 +89,10 @@ function TitleVideos({ dataSource }) {
               <div>
                 <h6
                   className={`pb-3 pt-2 px-3 text-center ${classes["text-name"]}`}
+                  onClick={() => {
+                    handleShow();
+                    setClickedVideo(video);
+                  }}
                 >
                   {video.name}
                 </h6>
@@ -101,11 +105,22 @@ function TitleVideos({ dataSource }) {
                 size="xl"
                 className="bg-dark bg-gradient"
               >
-                <Modal.Header closeButton closeVariant="white" className="bg-dark">
-                  <Modal.Title>Modal title</Modal.Title>
+                <Modal.Header
+                  closeButton
+                  closeVariant="white"
+                  className="bg-dark"
+                >
+                  <Modal.Title>{clickedVideo.name}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body className="bg-dark">
-                Video to embed via Youtube API.
+                <Modal.Body className="bg-dark d-flex justify-content-center">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${clickedVideo.key}`}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className={classes["video-frame"]}
+                  ></iframe>
                 </Modal.Body>
                 <Modal.Footer className="bg-dark">
                   <Button variant="secondary" onClick={handleClose}>
@@ -117,23 +132,6 @@ function TitleVideos({ dataSource }) {
           );
         })}
       </Carousel>
-
-      {/* <Carousel interval={null} className="w-50">
-        {dataSource.videos.results.map((video, idx) => {
-          return (
-            <Carousel.Item key={idx}>
-              <img
-                className="d-block w-100"
-                src={`https://img.youtube.com/vi/${video.key}/hqdefault.jpg`}
-                alt="slide"
-              />
-              <Carousel.Caption>
-                <p>{video.name}</p>
-              </Carousel.Caption>
-            </Carousel.Item>
-          );
-        })}
-      </Carousel> */}
     </Row>
   );
 }

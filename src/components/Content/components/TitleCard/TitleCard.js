@@ -4,11 +4,21 @@ import { useEffect, useState } from "react";
 import ErrorPage from "../../../ErrorPage/ErrorPage";
 import LoadingPage from "../../../LoadingPage/LoadingPage";
 import { Link } from "react-router-dom";
+import classes from "./TitleCard.module.scss";
 
 export default function TitleCard({ id, title, imgUrl, released, vote }) {
   const [imgDetails, setImgDetails] = useState({});
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const formatReleaseDate = (strDate) => {
+    const dateArray = strDate.split("-");
+    const date = new Date(...dateArray);
+    const formatedDateArray = date.toDateString().split(" ").slice(1);
+    const year = formatedDateArray.pop();
+    const formatedDate = formatedDateArray.join(" ").concat(", ", year);
+    return formatedDate;
+  }
 
   useEffect(() => {
     fetch(
@@ -26,7 +36,11 @@ export default function TitleCard({ id, title, imgUrl, released, vote }) {
     return <LoadingPage />;
   } else {
     return (
-      <Card style={{ width: "18rem" }} className="bg-dark mx-2">
+      <Card
+        style={{ width: "14rem" }}
+        className={`bg-dark mx-2 px-0 ${classes["movie-card"]}`}
+        border="warning"
+      >
         <Link to={`/movies/${id}`}>
           <Card.Img
             variant="top"
@@ -38,14 +52,14 @@ export default function TitleCard({ id, title, imgUrl, released, vote }) {
           />
         </Link>
         <Card.Body>
-          <Link to={`/movies/${id}`}>
-            <Card.Title className="text-light">{title}</Card.Title>
+          <Link to={`/movies/${id}`} className={classes["title-link"]}>
+            <Card.Title as="span" className={`text-light fs-5 fw-bold ${classes["movie-title"]}`}>
+              {title}
+            </Card.Title>
           </Link>
-          <Card.Text className="text-light">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="secondary">Go somewhere</Button>
+          <Card.Text className="text-secondary">
+          {formatReleaseDate(released)}
+          </Card.Text>  
         </Card.Body>
       </Card>
     );
