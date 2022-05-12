@@ -28,7 +28,6 @@ function MenuBtnList({ menuActivation }) {
         { name: "Most Popular Movies", path: "most-popular" },
         { name: "Browse Movies by Genre", path: "by-genre" },
         { name: "Coming Soon", path: "coming-soon" },
-        { name: "Movie News", path: "news" },
       ],
     },
     {
@@ -37,15 +36,12 @@ function MenuBtnList({ menuActivation }) {
         { name: "Top TV Shows", path: "top" },
         { name: "Most Popular TV Shows", path: "most-popular" },
         { name: "Browse TV Shows by Genre", path: "by-genre" },
-        { name: "TV News", path: "news" },
       ],
     },
     {
       title: "Actors",
       menuItems: [
-        { name: "Born Today", path: "born-today" },
-        { name: "Most Popular Celebs", path: "most-popular" },
-        { name: "Celebrity News", path: "news" },
+        { name: "Popular Actors", path: "popular-actors" },
       ],
     },
   ];

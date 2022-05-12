@@ -1,6 +1,5 @@
 import classes from "./FooterSocialLinks.module.scss";
 import Container from "react-bootstrap/Container";
-import ListGroup from "react-bootstrap/ListGroup";
 
 function FooterSocialLinks() {
   return (

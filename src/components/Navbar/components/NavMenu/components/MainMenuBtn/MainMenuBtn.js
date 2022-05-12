@@ -11,11 +11,11 @@ function MainMenuBtn({ menuActivation, handleMenuActivation }) {
 
   useEffect(() => {
     if (menuActivation) {
-      setHamburgerIconClass(`${hamburgerIconClass} ${classes.change}`);
+      setHamburgerIconClass((existingClass) => `${existingClass} ${classes.change}`);
     } else {
-      setHamburgerIconClass(hamburgerIconClassInit);
+      setHamburgerIconClass(() => hamburgerIconClassInit);
     }
-  }, [menuActivation]);
+  }, [menuActivation, hamburgerIconClassInit]);
 
   return (
       <Button

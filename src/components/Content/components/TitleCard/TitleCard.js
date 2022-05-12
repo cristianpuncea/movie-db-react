@@ -1,10 +1,11 @@
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import ErrorPage from "../../../ErrorPage/ErrorPage";
 import LoadingPage from "../../../LoadingPage/LoadingPage";
 import { Link } from "react-router-dom";
 import classes from "./TitleCard.module.scss";
+import  Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export default function TitleCard({ id, title, imgUrl, released, vote }) {
   const [imgDetails, setImgDetails] = useState({});
@@ -18,7 +19,7 @@ export default function TitleCard({ id, title, imgUrl, released, vote }) {
     const year = formatedDateArray.pop();
     const formatedDate = formatedDateArray.join(" ").concat(", ", year);
     return formatedDate;
-  }
+  };
 
   useEffect(() => {
     fetch(
@@ -51,15 +52,29 @@ export default function TitleCard({ id, title, imgUrl, released, vote }) {
             }
           />
         </Link>
-        <Card.Body>
+        <Card.Body className="d-flex flex-column justify-content-between">
           <Link to={`/movies/${id}`} className={classes["title-link"]}>
-            <Card.Title as="span" className={`text-light fs-5 fw-bold ${classes["movie-title"]}`}>
+            <Card.Title
+              as="span"
+              className={`text-light fs-6 fw-bold ${classes["movie-title"]}`}
+            >
               {title}
             </Card.Title>
           </Link>
-          <Card.Text className="text-secondary">
-          {formatReleaseDate(released)}
-          </Card.Text>  
+          <Row className="align-items-center">
+            <Card.Text className="text-secondary col m-0">
+              {formatReleaseDate(released)}
+            </Card.Text>
+            <Col xs="auto" className="d-flex flex-column align-items-center">
+                <div>
+                  <i className={`${classes.rating} bi bi-star-half fs-5`}></i>
+                  <span className="fw-bold">
+                    {vote.toFixed(1)}
+                  </span>
+                  <span className="fw-lighter">/10</span>
+                </div>
+              </Col>
+          </Row>
         </Card.Body>
       </Card>
     );

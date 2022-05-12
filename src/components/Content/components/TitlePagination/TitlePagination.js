@@ -1,41 +1,32 @@
 import Pagination from "react-bootstrap/Pagination";
 import { Link } from "react-router-dom";
+import generatePagination from "../../../../functions/generatePagination/generatePagination";
 import classes from "./TitlePagination.module.scss";
 
-function TitlePagination({ currentPage, totalPages}) {
-
-  const generatePagination = (desiredLength) => {
-    const totalPagesArray = [];
-
-    for (let i = 1; i <= totalPages; i++) {
-      totalPagesArray.push(i);
-    }
-
-    const leftIdx = currentPage - Math.round(desiredLength / 2);
-    const rightIdx = currentPage + Math.floor(desiredLength / 2);
-
-    if (leftIdx < 0) {
-      return totalPagesArray.slice(0, desiredLength);
-    } else if (rightIdx > totalPages) {
-      return totalPagesArray.slice(totalPages - desiredLength, totalPages);
-    } else {
-      return totalPagesArray.slice(leftIdx, rightIdx);
-    }
-  };
-
-  const paginationArray = generatePagination(9);
+function TitlePagination({ currentPage, totalPages, linkedPath }) {
+  const paginationArray = generatePagination(7, currentPage, totalPages);
 
   return (
-    <Pagination className={`justify-content-md-center mt-3 ${classes.pagination}`}>
+    <Pagination
+      className={`justify-content-md-center mt-3 ${classes.pagination}`}
+    >
       {currentPage !== 1 && (
         <>
           <li className="page-item">
-            <Link to="/movies/top/1" className="page-link" aria-label="Previous">
+            <Link
+              to={`${linkedPath}/1`}
+              className="page-link"
+              aria-label="Previous"
+            >
               <span aria-hidden="true">&laquo;</span>
             </Link>
           </li>
           <li className="page-item">
-            <Link to={`/movies/top/${currentPage - 1}`} className="page-link" aria-label="Previous">
+            <Link
+              to={`${linkedPath}/${currentPage - 1}`}
+              className="page-link"
+              aria-label="Previous"
+            >
               <span aria-hidden="true">&lsaquo;</span>
             </Link>
           </li>
@@ -46,15 +37,19 @@ function TitlePagination({ currentPage, totalPages}) {
         if (elem !== currentPage) {
           return (
             <li className="page-item" key={idx}>
-              <Link to={`/movies/top/${elem}`} className="page-link">
+              <Link to={`${linkedPath}/${elem}`} className="page-link">
                 {elem}
               </Link>
             </li>
           );
         } else {
           return (
-            <li className={`page-item ${classes.active}`} aria-current="page" key={idx}>
-              <Link to={`/movies/top/${currentPage}`} className="page-link">
+            <li
+              className={`page-item ${classes.active}`}
+              aria-current="page"
+              key={idx}
+            >
+              <Link to={`${linkedPath}/${currentPage}`} className="page-link">
                 {currentPage}
               </Link>
             </li>
@@ -64,13 +59,21 @@ function TitlePagination({ currentPage, totalPages}) {
 
       {currentPage !== totalPages && (
         <>
-        <li className="page-item">
-            <Link to={`/movies/top/${currentPage + 1}`} className="page-link" aria-label="Next">
+          <li className="page-item">
+            <Link
+              to={`${linkedPath}/${currentPage + 1}`}
+              className="page-link"
+              aria-label="Next"
+            >
               <span aria-hidden="true">&rsaquo;</span>
             </Link>
           </li>
           <li className="page-item">
-            <Link to={`/movies/top/${totalPages}`} className="page-link" aria-label="Next">
+            <Link
+              to={`${linkedPath}/${totalPages}`}
+              className="page-link"
+              aria-label="Next"
+            >
               <span aria-hidden="true">&raquo;</span>
             </Link>
           </li>
