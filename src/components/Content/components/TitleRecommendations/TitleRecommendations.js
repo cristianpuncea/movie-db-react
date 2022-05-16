@@ -24,11 +24,12 @@ function TitleRecommendations({ dataSource }) {
               key={idx}
             >
               <Link to={`/movies/${result.id}`}>
-                <Card.Img
+                {!result.backdrop_path && <div className={classes.backdrop_path_placeholder}></div> }
+                  {result.backdrop_path && <Card.Img
                   variant="top"
                   src={`https://image.tmdb.org/t/p/w500${result.backdrop_path}`}
                   className={`${classes["card-img"]}`}
-                />
+                />}
               </Link>
               <Card.Body className="d-flex justify-content-between align-items-center px-2 py-2">
                 <Card.Text className="m-0">

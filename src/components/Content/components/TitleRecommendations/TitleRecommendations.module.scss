@@ -20,14 +20,14 @@ i.rating {
 }
 
 .card-img:hover {
-cursor: pointer;
-opacity: 0.5;
+  cursor: pointer;
+  opacity: 0.5;
 }
 
 .more-link,
 .title-link {
   text-decoration: none;
-  color: #FFF;
+  color: #fff;
 }
 
 .more-link:active,
@@ -37,10 +37,20 @@ opacity: 0.5;
 
 .more-link:hover span,
 .title-link:hover {
-  color:#FFF;
+  color: #fff;
   opacity: 0.5;
 }
 
 .more-link:hover i {
   color: rgb(238, 238, 14);
+}
+
+.backdrop_path_placeholder {
+  min-width: 300px;
+  min-height: 178px;
+  background-color: rgb(52, 52, 52);
+}
+
+.backdrop_path_placeholder:hover {
+  opacity: 0.5;
 }

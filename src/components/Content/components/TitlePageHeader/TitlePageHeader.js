@@ -13,15 +13,20 @@ function TitlePageHeader({ dataSource }) {
   ) {
     if (prev.iso_3166_1 === "US" && prev.release_dates[0].certification) {
       return prev;
-    }else if (curr.iso_3166_1 === "US" && curr.release_dates[0].certification) {
+    } else if (
+      curr.iso_3166_1 === "US" &&
+      curr.release_dates[0].certification
+    ) {
       return curr;
     } else if (curr.release_dates[0].certification) {
       return curr;
     } else {
-      return prev;
+      return { release_dates: [{ certification: "n.a." }] };
     }
   },
   {}).release_dates[0].certification;
+
+  // const certification = "CERT";
 
   const minToHrs = (mins) => {
     const hours = mins / 60;

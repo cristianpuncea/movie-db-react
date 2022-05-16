@@ -1,0 +1,32 @@
+.img-placeholder {
+  width: 300px;
+  min-height: 170px;
+  background-color: rgb(58, 56, 56);
+}
+
+.img-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-container img:hover {
+  opacity: 0.3;
+}
+
+.img-placeholder:hover {
+  opacity: 0.3;
+}
+
+h4 {
+  position: absolute;
+  background: rgba($color: #616161, $alpha: 0.5);
+  color: white;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+h2 {
+  padding: 10px 0;
+}

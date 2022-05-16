@@ -6,21 +6,19 @@ import TitlePagination from "../../../components/Content/components/TitlePaginat
 import ErrorPage from "../../../components/ErrorPage/ErrorPage";
 import LoadingPage from "../../../components/LoadingPage/LoadingPage";
 
-function TopMovies() {
+function GetTitles({ fetchPath, linkPath, pageTitle, titleType }) {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  const { topMoviesPageId } = useParams();
+  const { pageID } = useParams();
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=f32f5745a157ac7e0c2013a20219c5e8&language=en-US&page=${topMoviesPageId}`
-    )
+    fetch(`${fetchPath}&page=${pageID}`)
       .then((res) => res.json())
       .then((data) => setItems(data))
       .catch((err) => setError(err))
       .finally(() => setIsLoaded(true));
-  }, [topMoviesPageId]);
+  }, [fetchPath, pageID]);
 
   if (error) {
     return <ErrorPage />;
@@ -31,28 +29,44 @@ function TopMovies() {
       <Container>
         <Row className="justify-content-center">
           <Col>
-            <h1 className="text-center">Top Movies</h1>
+            <h1 className="text-center">{pageTitle}</h1>
           </Col>
         </Row>
         <Row className="justify-content-center g-3">
-          {console.log(items)}
           {items.results.map((item, idx) => {
             return (
               <TitleCard
                 key={idx}
                 id={item.id}
-                title={item.title}
+                title={
+                  titleType === "movie"
+                    ? item.title
+                    : titleType === "tv"
+                    ? item.name
+                    : null
+                }
                 imgUrl={item.poster_path}
-                released={item.release_date}
+                released={
+                  titleType === "movie"
+                    ? item.release_date
+                    : titleType === "tv"
+                    ? item.first_air_date
+                    : null
+                }
                 vote={item.vote_average}
+                titleType={titleType}
               />
             );
           })}
         </Row>
-        <TitlePagination currentPage={parseInt(topMoviesPageId)} totalPages={items.total_pages}/>
+        <TitlePagination
+          currentPage={parseInt(pageID)}
+          totalPages={items.total_pages <= 500 ? items.total_pages : 500}
+          linkedPath={linkPath}
+        />
       </Container>
     );
   }
 }
 
-export default TopMovies;
+export default GetTitles;

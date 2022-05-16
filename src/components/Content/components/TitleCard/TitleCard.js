@@ -4,15 +4,25 @@ import ErrorPage from "../../../ErrorPage/ErrorPage";
 import LoadingPage from "../../../LoadingPage/LoadingPage";
 import { Link } from "react-router-dom";
 import classes from "./TitleCard.module.scss";
-import  Row from "react-bootstrap/Row";
+import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-export default function TitleCard({ id, title, imgUrl, released, vote }) {
+export default function TitleCard({
+  id,
+  title,
+  imgUrl,
+  released,
+  vote,
+  titleType,
+}) {
   const [imgDetails, setImgDetails] = useState({});
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const formatReleaseDate = (strDate) => {
+    if (!strDate) {
+      return "Unreleased";
+    }
     const dateArray = strDate.split("-");
     const date = new Date(...dateArray);
     const formatedDateArray = date.toDateString().split(" ").slice(1);
@@ -20,6 +30,13 @@ export default function TitleCard({ id, title, imgUrl, released, vote }) {
     const formatedDate = formatedDateArray.join(" ").concat(", ", year);
     return formatedDate;
   };
+
+  const titleLink =
+    titleType === "movie"
+      ? `/movies/${id}`
+      : titleType === "tv"
+      ? `/tv/${id}`
+      : null;
 
   useEffect(() => {
     fetch(
@@ -42,7 +59,7 @@ export default function TitleCard({ id, title, imgUrl, released, vote }) {
         className={`bg-dark mx-2 px-0 ${classes["movie-card"]}`}
         border="warning"
       >
-        <Link to={`/movies/${id}`}>
+        <Link to={titleLink}>
           <Card.Img
             variant="top"
             src={
@@ -53,7 +70,7 @@ export default function TitleCard({ id, title, imgUrl, released, vote }) {
           />
         </Link>
         <Card.Body className="d-flex flex-column justify-content-between">
-          <Link to={`/movies/${id}`} className={classes["title-link"]}>
+          <Link to={titleLink} className={classes["title-link"]}>
             <Card.Title
               as="span"
               className={`text-light fs-6 fw-bold ${classes["movie-title"]}`}
@@ -66,14 +83,12 @@ export default function TitleCard({ id, title, imgUrl, released, vote }) {
               {formatReleaseDate(released)}
             </Card.Text>
             <Col xs="auto" className="d-flex flex-column align-items-center">
-                <div>
-                  <i className={`${classes.rating} bi bi-star-half fs-5`}></i>
-                  <span className="fw-bold">
-                    {vote.toFixed(1)}
-                  </span>
-                  <span className="fw-lighter">/10</span>
-                </div>
-              </Col>
+              <div>
+                <i className={`${classes.rating} bi bi-star-half fs-5`}></i>
+                <span className="fw-bold">{vote.toFixed(1)}</span>
+                <span className="fw-lighter">/10</span>
+              </div>
+            </Col>
           </Row>
         </Card.Body>
       </Card>

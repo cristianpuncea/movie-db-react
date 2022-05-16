@@ -1,6 +1,6 @@
 .img-placeholder {
   width: 300px;
-  min-height: 150px;
+  min-height: 170px;
   background-color: rgb(58, 56, 56);
 }
 
@@ -12,6 +12,10 @@
 }
 
 .img-container img:hover {
+  opacity: 0.3;
+}
+
+.img-placeholder:hover {
   opacity: 0.3;
 }
 
