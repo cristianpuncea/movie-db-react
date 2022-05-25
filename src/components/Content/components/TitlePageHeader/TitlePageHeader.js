@@ -6,32 +6,48 @@ import popularityIcon from "../../../../assets/popularity-icon.svg";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
-function TitlePageHeader({ dataSource }) {
-  const certification = dataSource.release_dates.results.reduce(function (
-    prev,
-    curr
-  ) {
-    if (prev.iso_3166_1 === "US" && prev.release_dates[0].certification) {
-      return prev;
-    } else if (
-      curr.iso_3166_1 === "US" &&
-      curr.release_dates[0].certification
-    ) {
-      return curr;
-    } else if (curr.release_dates[0].certification) {
-      return curr;
-    } else {
-      return { release_dates: [{ certification: "n.a." }] };
-    }
-  },
-  {}).release_dates[0].certification;
+function TitlePageHeader({ dataSource, type }) {
+  console.log(dataSource);
 
-  // const certification = "CERT";
+  // Get certification information for both title types(tv or movie)
+  const getCertification = (data) => {
+    // default certification value
+    let certification = "n.a.";
+
+    // Certification for tv shows, based on specific format
+    if (type === "tv") {
+      for (const result of data.content_ratings.results) {
+        if (result.iso_3166_1 === "US" && result.rating) {
+          certification = result.rating;
+        } else if (result.rating) {
+          certification = result.rating;
+        }
+      }
+    }
+
+    // Certification for movies, based on specific format
+    if (type === "movie") {
+      for (const result of data.release_dates.results) {
+        if (result.iso_3166_1 === "US") {
+          for (const certif of result.release_dates) {
+            if (certif.certification) {
+              certification = certif.certification;
+            }
+          }
+        }
+      }
+    }
+
+    return certification;
+  };
+
+  // Get certification, depending of the title type (tv or movie)
+  const certification = getCertification(dataSource);
 
   const minToHrs = (mins) => {
-    const hours = mins / 60;
+    const hours = Math.floor(mins / 60);
     const minutes = mins % 60;
-    return `${hours.toFixed()}h ${minutes}m`;
+    return hours ? `${hours}h ${minutes}m` : `${minutes}m`;
   };
 
   // Define writers list and their contribution
@@ -75,11 +91,13 @@ function TitlePageHeader({ dataSource }) {
                 </li>
               )}
               <li className="text-light list-inline-item">
-                {dataSource.release_date.slice(0, 4)}
+                {type === "movie" && dataSource.release_date.slice(0, 4)}
+                {type === "tv" && dataSource.first_air_date.slice(0, 4)}
                 <i className="bi bi-dot"></i>
               </li>
               <li className="text-light list-inline-item">
-                {minToHrs(dataSource.runtime)}
+                {type === "tv" && minToHrs(dataSource.episode_run_time)}
+                {type === "movie" && minToHrs(dataSource.runtime)}
               </li>
             </ul>
           </Col>
@@ -163,30 +181,55 @@ function TitlePageHeader({ dataSource }) {
             <h5>Overview</h5>
             <p>{dataSource.overview}</p>
           </Row>
-          <Row>
-            <Col xs={4}>
-              <div className="fw-bolder">Director</div>
-              <div>
-                {
-                  dataSource.credits.crew.find((el) => el.job === "Director")
-                    .name
-                }
-              </div>
-            </Col>
-            <Col xs={4}>
-              <div className="fw-bolder">Writers</div>
-              <div>
-                {Object.keys(writers).map((writer, idx) => {
-                  return (
-                    <div key={idx}>
-                      <span>{writer} </span>
-                      <span className="fw-lighter">({writers[writer]})</span>
+
+          {type === "tv" && (
+            <Row>
+              <Col xs={4}>
+                <div className="fw-bolder">Creators</div>
+                <div>
+                  {!dataSource.created_by.length && (
+                    <div>
+                      <span>n.a.</span>
                     </div>
-                  );
-                })}
-              </div>
-            </Col>
-          </Row>
+                  )}
+                  {dataSource.created_by && dataSource.created_by.map((writer, idx) => {
+                    return (
+                      <div key={idx}>
+                        <span>{writer.name}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Col>
+            </Row>
+          )}
+
+          {type === "movie" && (
+            <Row>
+              <Col xs={4}>
+                <div className="fw-bolder">Director</div>
+                <div>
+                  {
+                    dataSource.credits.crew.find((el) => el.job === "Director")
+                      .name
+                  }
+                </div>
+              </Col>
+              <Col xs={4}>
+                <div className="fw-bolder">Writers</div>
+                <div>
+                  {Object.keys(writers).map((writer, idx) => {
+                    return (
+                      <div key={idx}>
+                        <span>{writer} </span>
+                        <span className="fw-lighter">({writers[writer]})</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Col>
+            </Row>
+          )}
         </Row>
       </Col>
     </Row>
