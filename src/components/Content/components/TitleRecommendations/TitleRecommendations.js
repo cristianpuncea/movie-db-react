@@ -4,7 +4,8 @@ import classes from "./TitleRecommendations.module.scss";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 
-function TitleRecommendations({ dataSource }) {
+function TitleRecommendations({ type, dataSource }) {
+  // const 
   return (
     <Row className="mt-4">
       <h5>
@@ -23,7 +24,7 @@ function TitleRecommendations({ dataSource }) {
               className="bg-dark mx-2"
               key={idx}
             >
-              <Link to={`/movies/${result.id}`}>
+              <Link to={`/${type}/${result.id}`}>
                 {!result.backdrop_path && <div className={classes.backdrop_path_placeholder}></div> }
                   {result.backdrop_path && <Card.Img
                   variant="top"
@@ -35,7 +36,7 @@ function TitleRecommendations({ dataSource }) {
                 <Card.Text className="m-0">
                   <Link
                     className={`${classes["title-link"]}`}
-                    to={`/movies/${result.id}`}
+                    to={`/${type}/${result.id}`}
                   >
                     {result.title}
                   </Link>

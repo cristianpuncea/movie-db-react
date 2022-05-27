@@ -31,12 +31,7 @@ export default function TitleCard({
     return formatedDate;
   };
 
-  const titleLink =
-    titleType === "movie"
-      ? `/movies/${id}`
-      : titleType === "tv"
-      ? `/tv/${id}`
-      : null;
+  const titleLink = `/${titleType}/${id}`;
 
   useEffect(() => {
     fetch(

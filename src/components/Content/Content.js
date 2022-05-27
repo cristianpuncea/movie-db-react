@@ -107,12 +107,12 @@ function Content({ loginStatus, handleLoginStatus }) {
           }
         />
         <Route path="account" element={<Account />} />
-        <Route path="movies/:movieId" element={<MoviePage />} />
-        <Route path="movies/:movieId/top-cast" element={<TopCastCrew />} />
-        <Route path="movies/:movieId/similar" element={<SimilarTitles />} />
-        <Route path="movies/:movieId/images" element={<ImagesPage />} />
+        <Route path="movie/:movieId" element={<MoviePage />} />
+        <Route path="movie/:movieId/top-cast" element={<TopCastCrew />} />
+        <Route path="movie/:movieId/similar" element={<SimilarTitles />} />
+        <Route path="movie/:movieId/images" element={<ImagesPage />} />
         <Route path="tv/:tvId" element={<TvShowPage />} />
-        <Route path="actors/:personId" element={<ActorPage />} />
+        <Route path="actor/:personId" element={<ActorPage />} />
         <Route
           path="*"
           element={

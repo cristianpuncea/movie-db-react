@@ -37,7 +37,7 @@ export default function MoviePage() {
           <TitleVideos dataSource={details} />
           <TitleCast dataSource={details} />
           <TitleImages dataSource={details} />
-          <TitleRecommendations dataSource={details} />
+          <TitleRecommendations type="movie" dataSource={details} />
         </Container>
       </>
     );

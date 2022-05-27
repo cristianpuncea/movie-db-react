@@ -192,13 +192,14 @@ function TitlePageHeader({ dataSource, type }) {
                       <span>n.a.</span>
                     </div>
                   )}
-                  {dataSource.created_by && dataSource.created_by.map((writer, idx) => {
-                    return (
-                      <div key={idx}>
-                        <span>{writer.name}</span>
-                      </div>
-                    );
-                  })}
+                  {dataSource.created_by &&
+                    dataSource.created_by.map((writer, idx) => {
+                      return (
+                        <div key={idx}>
+                          <span>{writer.name}</span>
+                        </div>
+                      );
+                    })}
                 </div>
               </Col>
             </Row>

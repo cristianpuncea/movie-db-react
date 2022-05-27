@@ -35,10 +35,10 @@ function TvShowPage() {
       <>
         <Container className="my-5">
           <TitlePageHeader type="tv" dataSource={details} />
-          <TitleVideos dataSource={details} />
+          {/* <TitleVideos dataSource={details} /> */}
           <TitleCast dataSource={details} />
           <TitleImages dataSource={details} />
-          <TitleRecommendations dataSource={details} />
+          <TitleRecommendations type="tv" dataSource={details} />
         </Container>
       </>
     );

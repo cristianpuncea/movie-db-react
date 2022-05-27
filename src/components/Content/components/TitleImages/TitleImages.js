@@ -6,17 +6,19 @@ import classes from "./TitleImages.module.scss";
 function TitleImages({ dataSource }) {
   return (
     <Row className="mt-4 justify-content-center">
-      <h5>
-        <Link to="images" className={classes["more-link"]}>
-          <span className={classes.title}>Images</span>
-          <span className={`ps-2 fw-lighter fs-6 ${classes["img-total"]}`}>
-            {dataSource.images.backdrops.length +
-              dataSource.images.logos.length +
-              dataSource.images.posters.length}
-          </span>
-          <i className="bi bi-caret-right-fill ps-2"></i>
-        </Link>
-      </h5>
+      {dataSource.images.backdrops.length && (
+        <h5>
+          <Link to="images" className={classes["more-link"]}>
+            <span className={classes.title}>Images</span>
+            <span className={`ps-2 fw-lighter fs-6 ${classes["img-total"]}`}>
+              {dataSource.images.backdrops.length +
+                dataSource.images.logos.length +
+                dataSource.images.posters.length}
+            </span>
+            <i className="bi bi-caret-right-fill ps-2"></i>
+          </Link>
+        </h5>
+      )}
       <Carousel
         additionalTransfrom={0}
         arrows
