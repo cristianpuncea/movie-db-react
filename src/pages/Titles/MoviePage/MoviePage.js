@@ -35,7 +35,7 @@ export default function MoviePage() {
         <Container className="my-5">
           <TitlePageHeader type="movie" dataSource={details} />
           <TitleVideos dataSource={details} />
-          <TitleCast dataSource={details} />
+          <TitleCast type="movie" dataSource={details} />
           <TitleImages dataSource={details} />
           <TitleRecommendations type="movie" dataSource={details} />
         </Container>

@@ -38,7 +38,7 @@ function TitleRecommendations({ type, dataSource }) {
                     className={`${classes["title-link"]}`}
                     to={`/${type}/${result.id}`}
                   >
-                    {result.title}
+                    {type === "movie" ? result.title : type === "tv" ? result.name : "n.a."}
                   </Link>
                 </Card.Text>
                 <Card.Text as="div">

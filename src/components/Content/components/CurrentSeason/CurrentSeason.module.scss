@@ -1,0 +1,32 @@
+.more-link,
+.title-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.more-link:active,
+.title-link:active {
+  border: 2px dotted grey;
+}
+
+.more-link:hover span,
+.title-link:hover {
+  color: #fff;
+  opacity: 0.5;
+}
+
+.more-link:hover i {
+  color: rgb(238, 238, 14);
+}
+
+.current-season .title div {
+font-weight: 500;
+}
+
+.current-season p {
+  padding-top: 1.5rem;
+  }
+
+  .current-season img:hover {
+    opacity: 0.5;
+  } 

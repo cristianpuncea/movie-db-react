@@ -51,24 +51,29 @@ function TitlePageHeader({ dataSource, type }) {
   };
 
   // Define writers list and their contribution
-  const writers = {};
-  const data = dataSource.credits.crew.filter(
-    (el) => el.department === "Writing"
-  );
-  data.forEach((writer) => {
-    if (!writers[writer.name]) {
-      writers[writer.name] = writer.job.toLowerCase();
-    } else {
-      writers[writer.name] = (
-        writers[writer.name] +
-        ", " +
-        writer.job
-      ).toLowerCase();
-    }
-  });
+  const getMovieWriters = (data) => {
+    const writers = {};
+    const writersData = data.credits.crew.filter(
+      (el) => el.department === "Writing"
+    );
+
+    writersData.forEach((writer) => {
+      if (!writers[writer.name]) {
+        writers[writer.name] = writer.job.toLowerCase();
+      } else {
+        writers[writer.name] = (
+          writers[writer.name] +
+          ", " +
+          writer.job
+        ).toLowerCase();
+      }
+    });
+
+    return writers;
+  };
 
   return (
-    <Row className="bg-dark">
+    <Row className="bg-dark pb-3">
       <Col md="auto">
         <Image
           src={`https://image.tmdb.org/t/p/w300${dataSource.poster_path}`}
@@ -76,12 +81,23 @@ function TitlePageHeader({ dataSource, type }) {
       </Col>
       <Col>
         <Row className="text-center py-3">
-          <h2>{dataSource.title}</h2>
+          <h2>
+            {type === "movie"
+              ? dataSource.title
+              : type === "tv"
+              ? dataSource.name
+              : " --- "}
+          </h2>
         </Row>
         <Row>
           <Col className="d-flex flex-column">
             <p className={classes["original-title"]}>
-              Original Title: {dataSource.original_title}
+              Original Title:{" "}
+              {type === "movie"
+                ? dataSource.original_title
+                : type === "tv"
+                ? dataSource.original_name
+                : " --- "}
             </p>
             <ul className={`list-inline ${classes["title-details"]}`}>
               {certification && (
@@ -185,6 +201,10 @@ function TitlePageHeader({ dataSource, type }) {
           {type === "tv" && (
             <Row>
               <Col xs={4}>
+                <div>Seasons: <span className="fw-bolder">{dataSource.number_of_seasons}</span></div>
+                <div>Episodes: <span className="fw-bolder">{dataSource.number_of_episodes}</span></div>
+              </Col>
+              <Col xs={4}>
                 <div className="fw-bolder">Creators</div>
                 <div>
                   {!dataSource.created_by.length && (
@@ -219,14 +239,18 @@ function TitlePageHeader({ dataSource, type }) {
               <Col xs={4}>
                 <div className="fw-bolder">Writers</div>
                 <div>
-                  {Object.keys(writers).map((writer, idx) => {
-                    return (
-                      <div key={idx}>
-                        <span>{writer} </span>
-                        <span className="fw-lighter">({writers[writer]})</span>
-                      </div>
-                    );
-                  })}
+                  {Object.keys(getMovieWriters(dataSource)).map(
+                    (writer, idx) => {
+                      return (
+                        <div key={idx}>
+                          <span>{writer} </span>
+                          <span className="fw-lighter">
+                            ({getMovieWriters(dataSource)[writer]})
+                          </span>
+                        </div>
+                      );
+                    }
+                  )}
                 </div>
               </Col>
             </Row>

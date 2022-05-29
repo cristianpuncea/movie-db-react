@@ -5,7 +5,7 @@ import Image from "react-bootstrap/Image";
 import classes from "./TitleCast.module.scss";
 import { Link } from "react-router-dom";
 
-function TitleCast({ dataSource }) {
+function TitleCast({ dataSource, type }) {
   let imgSrc = "";
   const fullCastList = dataSource.credits.cast;
   const reducedCastList = fullCastList.slice(0, 9);
@@ -13,8 +13,9 @@ function TitleCast({ dataSource }) {
   return (
     <Row className="gy-3 gx-3 mt-2">
       <h5>
-        <Link to="top-cast" className={classes["more-link"]}>
-          <span>Top Cast</span>
+        <Link to="cast" className={classes["more-link"]}>
+          {type === "movie" && <span>Top Cast</span>}
+          {type === "tv" && <span>Series Cast</span>}
           <i className="bi bi-caret-right-fill ps-2"></i>
         </Link>
       </h5>
@@ -50,10 +51,12 @@ function TitleCast({ dataSource }) {
         );
       })}
       <Col md={6} className="d-flex">
-        <div className={`bg-dark d-flex flex-row justify-content-center rounded w-100 ${classes["more-card"]}`}>
+        <div
+          className={`bg-dark d-flex flex-row justify-content-center rounded w-100 ${classes["more-card"]}`}
+        >
           <div className="align-self-center pt-3">
             <p className="fs-5">
-              <Link to="top-cast" className={classes["more-link"]}>
+              <Link to="cast" className={classes["more-link"]}>
                 <span>All Cast & Crew</span>
                 <i className="bi bi-arrow-right-square-fill ps-4"></i>
               </Link>

@@ -53,7 +53,7 @@ function ByGenreMovie() {
     <>
       {error && <ErrorPage />}
       <h2 className="text-center">Movies by Genre</h2>
-      <Container>
+      <Container className={classes.byGenre}>
         <Row className="g-3 justify-content-xl-start justify-content-center">
           {genreList.map((genre) => {
             const genreNameLink =

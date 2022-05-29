@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import { useParams } from "react-router-dom";
+import CurrentSeason from "../../../components/Content/components/CurrentSeason/CurrentSeason";
 import TitleCast from "../../../components/Content/components/TitleCast/TitleCast";
 import TitleImages from "../../../components/Content/components/TitleImages/TitleImages";
 import TitlePageHeader from "../../../components/Content/components/TitlePageHeader/TitlePageHeader";
@@ -8,7 +9,6 @@ import TitleRecommendations from "../../../components/Content/components/TitleRe
 import TitleVideos from "../../../components/Content/components/TitleVideos/TitleVideos";
 import ErrorPage from "../../../components/ErrorPage/ErrorPage";
 import LoadingPage from "../../../components/LoadingPage/LoadingPage";
-
 
 function TvShowPage() {
   const { tvId } = useParams();
@@ -35,8 +35,9 @@ function TvShowPage() {
       <>
         <Container className="my-5">
           <TitlePageHeader type="tv" dataSource={details} />
-          {/* <TitleVideos dataSource={details} /> */}
-          <TitleCast dataSource={details} />
+          <CurrentSeason dataSource={details} />
+          <TitleVideos dataSource={details} />
+          <TitleCast type="tv" dataSource={details} />
           <TitleImages dataSource={details} />
           <TitleRecommendations type="tv" dataSource={details} />
         </Container>

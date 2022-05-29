@@ -108,7 +108,7 @@ function Content({ loginStatus, handleLoginStatus }) {
         />
         <Route path="account" element={<Account />} />
         <Route path="movie/:movieId" element={<MoviePage />} />
-        <Route path="movie/:movieId/top-cast" element={<TopCastCrew />} />
+        <Route path="movie/:movieId/cast" element={<TopCastCrew />} />
         <Route path="movie/:movieId/similar" element={<SimilarTitles />} />
         <Route path="movie/:movieId/images" element={<ImagesPage />} />
         <Route path="tv/:tvId" element={<TvShowPage />} />

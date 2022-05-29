@@ -1,25 +1,25 @@
-.img-placeholder {
+.byGenre .img-placeholder {
   width: 300px;
   min-height: 170px;
   background-color: rgb(58, 56, 56);
 }
 
-.img-container {
+.byGenre .img-container {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.img-container img:hover {
+.byGenre .img-container img:hover {
   opacity: 0.3;
 }
 
-.img-placeholder:hover {
+.byGenre .img-placeholder:hover {
   opacity: 0.3;
 }
 
-h4 {
+.byGenre h4 {
   position: absolute;
   background: rgba($color: #616161, $alpha: 0.5);
   color: white;
@@ -27,6 +27,6 @@ h4 {
   padding: 4px;
 }
 
-h2 {
+.byGenre h2 {
   padding: 10px 0;
 }
