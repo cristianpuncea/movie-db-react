@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/movie-db-react/static/css/main.8dec83d4.css",
-    "main.js": "/movie-db-react/static/js/main.278c695e.js",
+    "main.css": "/movie-db-react/static/css/main.2af9e6fc.css",
+    "main.js": "/movie-db-react/static/js/main.2d376e30.js",
     "static/media/bootstrap-icons.woff?": "/movie-db-react/static/media/bootstrap-icons.c1d7432ee75fa194e499.woff",
     "static/media/bootstrap-icons.woff2?": "/movie-db-react/static/media/bootstrap-icons.a13b815539b49de48d23.woff2",
     "static/media/revicons.eot": "/movie-db-react/static/media/revicons.a77de540a38981833f9e.eot",
@@ -9,11 +9,11 @@
     "static/media/revicons.woff": "/movie-db-react/static/media/revicons.e8746a624ed098489406.woff",
     "static/media/popularity-icon.svg": "/movie-db-react/static/media/popularity-icon.945aadcf7cae7452a5b19720d0ebb1c4.svg",
     "index.html": "/movie-db-react/index.html",
-    "main.8dec83d4.css.map": "/movie-db-react/static/css/main.8dec83d4.css.map",
-    "main.278c695e.js.map": "/movie-db-react/static/js/main.278c695e.js.map"
+    "main.2af9e6fc.css.map": "/movie-db-react/static/css/main.2af9e6fc.css.map",
+    "main.2d376e30.js.map": "/movie-db-react/static/js/main.2d376e30.js.map"
   },
   "entrypoints": [
-    "static/css/main.8dec83d4.css",
-    "static/js/main.278c695e.js"
+    "static/css/main.2af9e6fc.css",
+    "static/js/main.2d376e30.js"
   ]
 }
