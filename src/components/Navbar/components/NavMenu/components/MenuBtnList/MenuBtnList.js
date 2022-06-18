@@ -39,9 +39,9 @@ function MenuBtnList({ menuActivation }) {
       ],
     },
     {
-      title: "Actors",
+      title: "People",
       menuItems: [
-        { name: "Popular Actors", path: "popular-actors" },
+        { name: "Popular People", path: "popular" },
       ],
     },
   ];

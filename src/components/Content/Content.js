@@ -1,14 +1,10 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "../../pages/Home/Home";
-import BornTodayActors from "../../pages/Actors/BornTodayActors/BornTodayActors";
-import MostPopularActors from "../../pages/Actors/MostPopularActors/MostPopularActors";
-import NewsActors from "../../pages/Actors/NewsActors/NewsActors";
 import Login from "../../pages/Login/Login";
 import Account from "../../pages/Account/Account";
 import Container from "react-bootstrap/Container";
 import MoviePage from "../../pages/Titles/MoviePage/MoviePage";
 import TopCastCrew from "./components/TopCastCrew/TopCastCrew";
-import ActorPage from "../../pages/Actors/ActorPage/ActorPage";
 import SimilarTitles from "./components/SimilarTitles/SimilarTitles";
 import ImagesPage from "./components/ImagesPage/ImagesPage";
 import GetTitles from "../../pages/Titles/GetTitles/GetTitles";
@@ -16,6 +12,8 @@ import Genre from "../../pages/Genre/Genre";
 import TvShowPage from "../../pages/Titles/TvShowPage/TvShowPage";
 import ByGenreTV from "../../pages/Titles/ByGenreTV/ByGenreTV";
 import ByGenreMovie from "../../pages/Titles/ByGenreMovie/ByGenreMovie";
+import PopularPeople from "../../pages/People/PopularPeople/PopularPeople";
+import PersonPage from "../../pages/People/PersonPage/PersonPage";
 
 function Content({ loginStatus, handleLoginStatus }) {
   return (
@@ -49,7 +47,10 @@ function Content({ loginStatus, handleLoginStatus }) {
           />
           <Route path="by-genre" element={<ByGenreMovie />} />
           <Route path="by-genre/:genre" element={<Navigate to="1" />} />
-          <Route path="by-genre/:genre/:pageID" element={<Genre titleType="movie" />} />
+          <Route
+            path="by-genre/:genre/:pageID"
+            element={<Genre titleType="movie" />}
+          />
           <Route path="coming-soon" element={<Navigate to="1" />} />
           <Route
             path="coming-soon/:pageID"
@@ -90,12 +91,14 @@ function Content({ loginStatus, handleLoginStatus }) {
           />
           <Route path="by-genre" element={<ByGenreTV />} />
           <Route path="by-genre/:genre" element={<Navigate to="1" />} />
-          <Route path="by-genre/:genre/:pageID" element={<Genre titleType="tv" />} />
+          <Route
+            path="by-genre/:genre/:pageID"
+            element={<Genre titleType="tv" />}
+          />
         </Route>
-        <Route path="actors">
-          <Route path="born-today" element={<BornTodayActors />} />
-          <Route path="most-popular" element={<MostPopularActors />} />
-          <Route path="news" element={<NewsActors />} />
+        <Route path="people">
+          <Route path="popular" element={<Navigate to="1" />} />
+          <Route path="popular/:pageID" element={<PopularPeople />} />
         </Route>
         <Route
           path="login"
@@ -112,7 +115,7 @@ function Content({ loginStatus, handleLoginStatus }) {
         <Route path="movie/:movieId/similar" element={<SimilarTitles />} />
         <Route path="movie/:movieId/images" element={<ImagesPage />} />
         <Route path="tv/:tvId" element={<TvShowPage />} />
-        <Route path="actor/:personId" element={<ActorPage />} />
+        <Route path="person/:personId" element={<PersonPage />} />
         <Route
           path="*"
           element={

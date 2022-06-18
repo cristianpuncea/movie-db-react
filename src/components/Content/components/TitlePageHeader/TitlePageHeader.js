@@ -7,7 +7,6 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 function TitlePageHeader({ dataSource, type }) {
-  console.log(dataSource);
 
   // Get certification information for both title types(tv or movie)
   const getCertification = (data) => {

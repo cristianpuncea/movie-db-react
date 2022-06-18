@@ -13,8 +13,9 @@ function CurrentSeason({ dataSource }) {
   const getSeasonPremiereDate = (airDate) => {
     const [year, month, day] = airDate.split("-");
     const date = new Date(year, month, day);
+    const stringDate = date.toDateString().replace(" ", ", ");
 
-    return date.toDateString();
+    return stringDate;
   };
 
   return (

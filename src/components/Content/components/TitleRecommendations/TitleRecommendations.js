@@ -5,7 +5,6 @@ import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 
 function TitleRecommendations({ type, dataSource }) {
-  // const 
   return (
     <Row className="mt-4">
       <h5>
